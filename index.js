@@ -8,7 +8,7 @@ mongoose
   .then(() => console.log("db is connected successfully"))
   .catch((err) => console.log("error is : " + err));
 app.use(express.json());
-const articleRoutes = require("./routes/articleRoutes");
+const articleRoutes = require("./src/routes/articleRoutes");
 
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -25,7 +25,6 @@ app.get("/product", (req, res) => {
 app.get("/category", (req, res) => {
   res.send("this is category page");
 });
-
 
 app.use("/article", articleRoutes);
 

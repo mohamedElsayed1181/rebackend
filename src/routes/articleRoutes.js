@@ -11,10 +11,13 @@ const {
 
 
 
-router.post("/", addArticle);
+router.post("/article", addArticle);
 
-router.put("/:id", editArticle);
+router.put("/article/:id", editArticle);
 
-router.delete("/:id", deleteArticle);
+router.delete("/article/:id", deleteArticle);
 
-router.get("/", verifyJwt, getArticles);
+router.get("/", getArticles);
+
+
+module.exports = router;
