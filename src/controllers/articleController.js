@@ -1,3 +1,4 @@
+const Article = require("../models/Article");
 const addArticle = async (req, res) => {
   try {
     const newArticle = await Article.create(req.body);
@@ -10,17 +11,12 @@ const addArticle = async (req, res) => {
   }
 };
 
-
 const editArticle = async (req, res) => {
   try {
-    const article = await Article.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const article = await Article.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
     if (!article) {
       return res.status(404).json({
@@ -36,12 +32,9 @@ const editArticle = async (req, res) => {
   }
 };
 
-
 const deleteArticle = async (req, res) => {
   try {
-    const article = await Article.findByIdAndDelete(
-      req.params.id
-    );
+    const article = await Article.findByIdAndDelete(req.params.id);
 
     if (!article) {
       return res.status(404).json({
@@ -63,11 +56,7 @@ const deleteArticle = async (req, res) => {
 const getArticles = async (req, res) => {
   try {
     // 1. Query params
-    const {
-      search,
-      page = 1,
-      limit = 10,
-    } = req.query;
+    const { search, page = 1, limit = 10 } = req.query;
 
     // 2. Dynamic query
     let query = {};
@@ -116,14 +105,12 @@ const getArticles = async (req, res) => {
       totalPages: Math.ceil(total / limitNumber),
       articles,
     });
-
   } catch (err) {
     res.status(500).json({
       error: err.message,
     });
   }
 };
-
 
 module.exports = {
   addArticle,
