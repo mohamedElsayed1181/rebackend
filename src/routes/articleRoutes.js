@@ -9,15 +9,12 @@ const {
   getArticles,
 } = require("../controllers/articleController");
 
+router.post("/", addArticle);
 
+router.put("/:id", editArticle);
 
-router.post("/article", addArticle);
-
-router.put("/article/:id", editArticle);
-
-router.delete("/article/:id", deleteArticle);
+router.delete("/:id", deleteArticle);
 
 router.get("/", getArticles);
-
 
 module.exports = router;
