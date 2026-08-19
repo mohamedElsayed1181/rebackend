@@ -9,48 +9,48 @@ mongoose
   .catch((err) => console.log("error is : " + err));
 app.use(express.json());
 const articleRoutes = require("./src/routes/articleRoutes");
-
+const categoryRoutes = require("./src/routes/categoryRoutes");
 app.get("/", (req, res) => {
   res.send("hello world");
 });
 
-app.get("/home", (req, res) => {
-  res.send("please login first to see this page");
-});
+// app.get("/home", (req, res) => {
+//   res.send("please login first to see this page");
+// });
 
-app.get("/product", (req, res) => {
-  res.send("this is product page");
-});
+// app.get("/product", (req, res) => {
+//   res.send("this is product page");
+// });
 
-app.get("/category", (req, res) => {
-  res.send("this is category page");
-});
+// app.get("/category", (req, res) => {
+//   res.send("this is category page");
+// });
 
 app.use("/article", articleRoutes);
+app.use("/category", categoryRoutes);
 
 
+// app.post("/addComment/:num1/:num2", (req, res) => {
+//   const num1 = req.params.num1;
+//   const num2 = req.params.num2;
+//   const total = Number(num1) + Number(num2);
 
-app.post("/addComment/:num1/:num2", (req, res) => {
-  const num1 = req.params.num1;
-  const num2 = req.params.num2;
-  const total = Number(num1) + Number(num2);
+//   res.send(`the sum of ${total}`);
+// });
 
-  res.send(`the sum of ${total}`);
-});
+// app.post("/addFormInput", (req, res) => {
+// const input1 = req.body.input1;
+// const input2 = req.body.input2;
 
-app.post("/addFormInput", (req, res) => {
-const input1 = req.body.input1;
-const input2 = req.body.input2;
-
-  res.send(" the sum of " + (Number(input1) + Number(input2)));
-});
+//   res.send(" the sum of " + (Number(input1) + Number(input2)));
+// });
 
 
-app.post("/sample", (req, res) => {
-const age = req.query.age;
+// app.post("/sample", (req, res) => {
+// const age = req.query.age;
 
-  res.send(`this is ${age} years old`);
-});
+//   res.send(`this is ${age} years old`);
+// });
 //articles
 //add article
 
